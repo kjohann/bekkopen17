@@ -13,7 +13,7 @@ const Todo = ({todos, actions, listId}) =>{
 
   return (
     <div>
-      <Header addTodo={addTodoWrapped} />
+      <Header addTodo={addTodoWrapped} placeholder="What needs to be done?" />
       <MainSection todos={todos} actions={actions} />
     </div>
   )

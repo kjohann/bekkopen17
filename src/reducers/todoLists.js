@@ -14,7 +14,7 @@ export default function todoLists(state = initialState, action) {
       return [
         {
           id: uuidV4(),
-          name: action.name
+          name: action.text
         },
         ...state
       ]
