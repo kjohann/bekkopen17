@@ -2,24 +2,28 @@ import React, { PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as TodoActions from '../actions'
-import { Link } from 'react-router';
 import Header from '../components/Header'
+import TodoListItem from '../components/TodoListItem';
 
 const TodoLists = ({todoLists, actions}) => {
   return (
     <div>
       <Header addTodo={actions.addTodoList} placeholder="Create new list" />
 
-      <section>
-        <ul>
+      <section className="main">
+        <ul className="todo-list">
           {todoLists.map(l => {
-            const link = `/todos/${l.id}`;
-            return <li key={`list-${l.id}`}><Link to={link}>{l.name}</Link></li>
+            return <TodoListItem key={`list-${l.id}`} listItem={l} {...actions}/>
           })}
         </ul>
       </section>
     </div>
   );
+}
+
+TodoLists.propTypes = {
+  todoLists: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({

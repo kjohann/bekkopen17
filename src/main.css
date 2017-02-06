@@ -9,3 +9,7 @@
 .header > h1 a:visited {
   color: rgba(175, 47, 47, 1);
 }
+
+.main a {
+  text-decoration: none;
+}
