@@ -7,3 +7,5 @@ export const CLEAR_COMPLETED = 'CLEAR_COMPLETED'
 
 export const ADD_TODOLIST = 'ADD_TODOLIST';
 export const DELETE_TODOLIST = 'DELETE_TODOLIST'
+
+export const AJAX_REQUEST = 'AJAX_REQUEST';
