@@ -4,9 +4,15 @@ const initialState = [
   {
     text: 'Use Redux',
     completed: false,
-    id: 0
+    id: 0,
+    listId: '110ec58a-a0f2-4ac4-8393-c866d813b8d1',
   }
 ]
+
+export const getByListId = (id, todos) => {
+  console.log(todos, id)
+  return todos.filter(t => t.listId === id);
+}
 
 export default function todos(state = initialState, action) {
   switch (action.type) {
@@ -15,7 +21,8 @@ export default function todos(state = initialState, action) {
         {
           id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
           completed: false,
-          text: action.text
+          text: action.text,
+          listId: action.listId
         },
         ...state
       ]

@@ -4,21 +4,29 @@ import { connect } from 'react-redux'
 import Header from '../components/Header'
 import MainSection from '../components/MainSection'
 import * as TodoActions from '../actions'
+import { getByListId } from '../reducers/todos';
 
-const App = ({todos, actions}) => (
-  <div>
-    <Header addTodo={actions.addTodo} />
-    <MainSection todos={todos} actions={actions} />
-  </div>
-)
+const Todo = ({todos, actions, listId}) =>{
+  const addTodoWrapped = text => {
+    actions.addTodo({text, listId});
+  }
 
-App.propTypes = {
+  return (
+    <div>
+      <Header addTodo={addTodoWrapped} />
+      <MainSection todos={todos} actions={actions} />
+    </div>
+  )
+}
+
+Todo.propTypes = {
   todos: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 }
 
-const mapStateToProps = state => ({
-  todos: state.todos
+const mapStateToProps = (state, ownProps) => ({
+  todos: getByListId(ownProps.params.listId, state.todos),
+  listId: ownProps.params.listId
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -28,4 +36,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(Todo)

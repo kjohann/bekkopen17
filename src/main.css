@@ -1,0 +1,11 @@
+.header > h1 {
+  color: rgba(175, 47, 47, 1);
+}
+
+.header > h1 a {
+  text-decoration: none;
+}
+
+.header > h1 a:visited {
+  color: rgba(175, 47, 47, 1);
+}
