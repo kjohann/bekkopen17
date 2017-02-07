@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { createStore, applyMiddleware, compose } from 'redux'
 import { routerMiddleware, syncHistoryWithStore  } from 'react-router-redux';
 import { Provider } from 'react-redux'
@@ -13,7 +13,7 @@ import './main.css'
 import createLogger from 'redux-logger';
 
 const middleware = applyMiddleware(
-  routerMiddleware(browserHistory),
+  routerMiddleware(hashHistory),
   createLogger({
     predicate: () => true
   }
@@ -24,16 +24,16 @@ const store = createStore(reducer, {}, compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
 
-const history = syncHistoryWithStore(browserHistory, store);
+const history = syncHistoryWithStore(hashHistory, store);
 
 render(
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/">
+      <Route path="/app">
         <IndexRoute component={TodoLists} />
         <Route path="/todos/:listId" component={Todo} />
-        <Route path="*" component={NotFound} />
       </Route>
+      <Route path="*" component={NotFound} />
     </Router>
   </Provider>,
   document.getElementById('root')
