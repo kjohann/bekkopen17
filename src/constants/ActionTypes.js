@@ -9,3 +9,6 @@ export const ADD_TODOLIST = 'ADD_TODOLIST';
 export const DELETE_TODOLIST = 'DELETE_TODOLIST'
 
 export const AJAX_REQUEST = 'AJAX_REQUEST';
+
+export const GET_TODOLISTS = 'GET_TODOLISTS';
+export const GET_TODOS = 'GET_TODOS';

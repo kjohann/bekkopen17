@@ -29,7 +29,7 @@ const history = syncHistoryWithStore(hashHistory, store);
 render(
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/app">
+      <Route path="/">
         <IndexRoute component={TodoLists} />
         <Route path="/todos/:listId" component={Todo} />
       </Route>

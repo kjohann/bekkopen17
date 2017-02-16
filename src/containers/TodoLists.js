@@ -5,20 +5,29 @@ import * as TodoActions from '../actions'
 import Header from '../components/Header'
 import TodoListItem from '../components/TodoListItem';
 
-const TodoLists = ({todoLists, actions}) => {
-  return (
-    <div>
-      <Header addTodo={actions.addTodoList} placeholder="Create new list" />
+class TodoLists extends React.Component {
+  constructor(props) {
+    super(props);
 
-      <section className="main">
-        <ul className="todo-list">
-          {todoLists.map(l => {
-            return <TodoListItem key={`list-${l.id}`} listItem={l} {...actions}/>
-          })}
-        </ul>
-      </section>
-    </div>
-  );
+    props.actions.getTodoLists();
+  }
+
+  render() {
+    const {todoLists, actions} = this.props;
+    return (
+      <div>
+        <Header addTodo={actions.addTodoList} placeholder="Create new list" />
+
+        <section className="main">
+          <ul className="todo-list">
+            {todoLists.map(l => {
+              return <TodoListItem key={`list-${l.id}`} listItem={l} {...actions}/>
+            })}
+          </ul>
+        </section>
+      </div>
+    );
+  }
 }
 
 TodoLists.propTypes = {

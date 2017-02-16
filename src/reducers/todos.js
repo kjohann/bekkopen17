@@ -1,13 +1,6 @@
-import { ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO, COMPLETE_ALL, CLEAR_COMPLETED } from '../constants/ActionTypes'
+import { ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO, COMPLETE_ALL, CLEAR_COMPLETED, GET_TODOS } from '../constants/ActionTypes'
 
-const initialState = [
-  {
-    text: 'Use Redux',
-    completed: false,
-    id: 0,
-    listId: '110ec58a-a0f2-4ac4-8393-c866d813b8d1',
-  }
-]
+const initialState = []
 
 export const getByListId = (id, todos) => {
   console.log(todos, id)
@@ -16,14 +9,11 @@ export const getByListId = (id, todos) => {
 
 export default function todos(state = initialState, action) {
   switch (action.type) {
+    case GET_TODOS:
+      return action.payload.todos;
     case ADD_TODO:
       return [
-        {
-          id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
-          completed: false,
-          text: action.text,
-          listId: action.listId
-        },
+        action.payload,
         ...state
       ]
 
@@ -34,16 +24,16 @@ export default function todos(state = initialState, action) {
 
     case EDIT_TODO:
       return state.map(todo =>
-        todo.id === action.id ?
-          { ...todo, text: action.text } :
-          todo
+        todo.id === action.id
+          ? { ...todo, text: action.text }
+          : todo
       )
 
     case COMPLETE_TODO:
       return state.map(todo =>
-        todo.id === action.id ?
-          { ...todo, completed: !todo.completed } :
-          todo
+        todo.id === action.id
+          ? { ...todo, completed: action.completed }
+          : todo
       )
 
     case COMPLETE_ALL:

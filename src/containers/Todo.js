@@ -6,17 +6,26 @@ import MainSection from '../components/MainSection'
 import * as TodoActions from '../actions'
 import { getByListId } from '../reducers/todos';
 
-const Todo = ({todos, actions, listId}) =>{
-  const addTodoWrapped = text => {
-    actions.addTodo({text, listId});
+class Todo extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.props.actions.getTodos(this.props.listId);
   }
 
-  return (
-    <div>
-      <Header addTodo={addTodoWrapped} placeholder="What needs to be done?" />
-      <MainSection todos={todos} actions={actions} />
-    </div>
-  )
+  render() {
+    const { todos, actions, listId } = this.props;
+    const addTodoWrapped = text => {
+      actions.addTodo({text, listId});
+    }
+
+    return (
+      <div>
+        <Header addTodo={addTodoWrapped} placeholder="What needs to be done?" />
+        <MainSection todos={todos} actions={actions} />
+      </div>
+    )
+  }
 }
 
 Todo.propTypes = {
