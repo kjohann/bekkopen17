@@ -1,5 +1,4 @@
 import { ADD_TODOLIST, DELETE_TODOLIST, GET_TODOLISTS } from '../constants/ActionTypes';
-import uuidV4 from 'uuid/v4';
 
 const initialState = []
 
@@ -14,7 +13,7 @@ export default function todoLists(state = initialState, action) {
       ]
     case DELETE_TODOLIST:
       return state.filter(todoList =>
-        todoList.id !== action.id
+        todoList.id !== action.payload.id
       )
     default:
       return state;

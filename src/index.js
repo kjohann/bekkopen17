@@ -11,9 +11,11 @@ import reducer from './reducers'
 import 'todomvc-app-css/index.css'
 import './main.css'
 import createLogger from 'redux-logger';
+import ajaxMiddleware from './middleware/ajaxMiddleware';
 
 const middleware = applyMiddleware(
   routerMiddleware(hashHistory),
+  ajaxMiddleware,
   createLogger({
     predicate: () => true
   }

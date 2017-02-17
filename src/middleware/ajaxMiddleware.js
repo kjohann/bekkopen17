@@ -1,4 +1,4 @@
-import { AJAX_REQUEST } from 'actions';
+import { AJAX_REQUEST } from '../constants/ActionTypes';
 // import { handleError } from 'actionCreators/serverActionCreators';
 
 /**
@@ -14,7 +14,6 @@ export default store => next => action => { // eslint-disable-line consistent-re
   })
   .catch((err) => {
     // handleError(err, dispatch);
-    alert('Oh noes');
-    console.log(err);
+    console.log(':(', err);
   });
 };

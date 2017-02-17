@@ -10,6 +10,12 @@ const TODO_FILTERS = {
 }
 
 export default class MainSection extends Component {
+  constructor() {
+    super();
+
+    this.handleClearCompleted.bind(this);
+  }
+
   static propTypes = {
     todos: PropTypes.array.isRequired,
     actions: PropTypes.object.isRequired
@@ -18,7 +24,7 @@ export default class MainSection extends Component {
   state = { filter: SHOW_ALL }
 
   handleClearCompleted = () => {
-    this.props.actions.clearCompleted()
+    this.props.todos.filter(t => t.completed).forEach(t => this.props.actions.deleteTodo(t.id));
   }
 
   handleShow = filter => {
@@ -27,12 +33,17 @@ export default class MainSection extends Component {
 
   renderToggleAll(completedCount) {
     const { todos, actions } = this.props
+
+    const completeAll = todos => {
+      todos.forEach(t => actions.completeTodo(t));
+    }
+
     if (todos.length > 0) {
       return (
         <input className="toggle-all"
                type="checkbox"
                checked={completedCount === todos.length}
-               onChange={actions.completeAll} />
+               onChange={() => completeAll(todos)} />
       )
     }
   }
@@ -47,7 +58,7 @@ export default class MainSection extends Component {
         <Footer completedCount={completedCount}
                 activeCount={activeCount}
                 filter={filter}
-                onClearCompleted={this.handleClearCompleted.bind(this)}
+                onClearCompleted={this.handleClearCompleted}
                 onShow={this.handleShow.bind(this)} />
       )
     }

@@ -35,7 +35,7 @@ Todo.propTypes = {
 
 const mapStateToProps = (state, ownProps) => ({
   todos: getByListId(ownProps.params.listId, state.todos),
-  listId: ownProps.params.listId
+  listId: ownProps.params.listId,
 })
 
 const mapDispatchToProps = dispatch => ({
