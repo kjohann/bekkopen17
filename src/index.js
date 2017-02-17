@@ -12,6 +12,17 @@ import 'todomvc-app-css/index.css'
 import './main.css'
 import createLogger from 'redux-logger';
 import ajaxMiddleware from './middleware/ajaxMiddleware';
+import AuthService from './AuthService';
+import Login from './containers/Login';
+
+const auth = new AuthService();
+
+// validate authentication for private routes
+const requireAuth = (nextState, replace) => {
+  if (!auth.loggedIn()) {
+    replace({ pathname: '/login' })
+  }
+}
 
 const middleware = applyMiddleware(
   routerMiddleware(hashHistory),
@@ -33,7 +44,8 @@ render(
     <Router history={history}>
       <Route path="/">
         <IndexRoute component={TodoLists} />
-        <Route path="/todos/:listId" component={Todo} />
+        <Route path="/todos/:listId" component={Todo} onEnter={requireAuth} />
+        <Route path="/login" component={Login} />
       </Route>
       <Route path="*" component={NotFound} />
     </Router>
