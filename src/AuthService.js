@@ -7,7 +7,7 @@ export default class AuthService {
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, authEndpoint, {
       auth: {
-        redirectUrl: 'http://kristian.lmg.no/login',
+        redirectUrl: 'https://bekkopentodo.azureedge.net/',
         responseType: 'token'
       }
     })

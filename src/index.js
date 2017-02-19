@@ -39,6 +39,7 @@ const store = createStore(reducer, {}, compose(
 
 const history = syncHistoryWithStore(browserHistory, store);
 
+
 render(
   <Provider store={store}>
     <Router history={history}>
