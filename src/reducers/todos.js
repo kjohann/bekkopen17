@@ -3,7 +3,6 @@ import { ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO, COMPLETE_ALL, CLEAR_CO
 const initialState = []
 
 export const getByListId = (id, todos) => {
-  console.log(todos, id)
   return todos.filter(t => t.listId === id);
 }
 
