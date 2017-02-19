@@ -1,0 +1,10 @@
+﻿{
+  "frameworks": {
+    "net46": {
+      "dependencies": {
+        "Microsoft.Azure.DocumentDB": "1.7.1",
+        "Microsoft.Azure.WebJobs.Extensions.DocumentDB": "1.0.0-beta2"
+      }
+    }
+  }
+}

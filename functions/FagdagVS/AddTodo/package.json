@@ -1,0 +1,9 @@
+{
+  "name": "addtodo",
+  "version": "0.0.1",
+  "private": false,
+  "dependencies": {
+    "uuid": "^3.0.1",
+    "express-jwt": "^5.1.0"
+  }
+}

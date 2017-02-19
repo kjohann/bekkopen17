@@ -1,0 +1,35 @@
+﻿{
+  "disabled": false,
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [ "post" ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "documentDB",
+      "name": "newTodo",
+      "databaseName": "TodoApp",
+      "collectionName": "Todos",
+      "createIfNotExists": true,
+      "connection": "DocumentDbConnectionString",
+      "direction": "out"
+    },
+    {
+      "type": "documentDB",
+      "name": "todoList",
+      "databaseName": "TodoApp",
+      "collectionName": "TodoLists",
+      "id": "{todoListId}",
+      "connection": "DocumentDbConnectionString",
+      "direction": "in"
+    }
+  ]
+}

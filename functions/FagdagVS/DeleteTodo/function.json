@@ -1,0 +1,26 @@
+﻿{
+  "disabled": false,
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [ "delete" ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "documentDB",
+      "name": "todo",
+      "databaseName": "TodoApp",
+      "collectionName": "Todos",
+      "id": "{todoId}",
+      "connection": "DocumentDbConnectionString",
+      "direction": "in"
+    }
+  ]
+}

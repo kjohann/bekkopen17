@@ -1,0 +1,9 @@
+{
+  "name": "gettodos",
+  "version": "0.0.1",
+  "private": false,
+  "dependencies": {
+    "documentdb": "^1.10.2",
+    "express-jwt": "^5.1.0"
+  }
+}

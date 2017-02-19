@@ -1,0 +1,25 @@
+﻿{
+  "disabled": false,
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [ "get" ]
+    },
+    {
+      "name": "res",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "documentDB",
+      "name": "client",
+      "databaseName": "TodoApp",
+      "collectionName": "TodoLists",
+      "connection": "DocumentDbConnectionString",
+      "direction": "in"
+    }
+  ]
+}
