@@ -7,7 +7,7 @@ export default class AuthService {
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, authEndpoint, {
       auth: {
-        redirectUrl: 'http://localhost:3000/#/login',
+        redirectUrl: 'http://kristian.lmg.no/login',
         responseType: 'token'
       }
     })

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { createStore, applyMiddleware, compose } from 'redux'
 import { routerMiddleware, syncHistoryWithStore  } from 'react-router-redux';
 import { Provider } from 'react-redux'
@@ -25,7 +25,7 @@ const requireAuth = (nextState, replace) => {
 }
 
 const middleware = applyMiddleware(
-  routerMiddleware(hashHistory),
+  routerMiddleware(browserHistory),
   ajaxMiddleware,
   createLogger({
     predicate: () => true
@@ -37,7 +37,7 @@ const store = createStore(reducer, {}, compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
 
-const history = syncHistoryWithStore(hashHistory, store);
+const history = syncHistoryWithStore(browserHistory, store);
 
 render(
   <Provider store={store}>
